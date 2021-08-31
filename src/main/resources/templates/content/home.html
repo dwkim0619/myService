@@ -4,24 +4,40 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default_layout}">
-    
+		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
     <th:block layout:fragment="head">
     	<title>Spring Boot</title>
-		
-        <!--/* css */-->
-        <link th:href="@{/css/common.css}" rel="stylesheet" />
     </th:block>
+
     <body>
+    	<div class="container p-3 my-3 bg-dark text-white">
         <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
+        </div>
 		
-        <div layout:fragment="content" class="content">
-            <h2>This is Content</h2>
-            <hr>
-            <table border="1">
+        <div layout:fragment="content" class="container">
+            <h3>부서코드 목록</h3>
+<!--             <div class="row row-cols-auto"> -->
+<!--             	<div class="col">부서코드</div> -->
+<!--             	<div class="col">부서명칭</div> -->
+<!--             </div> -->
+<!--             <th:block th:each="rl : ${resultList}"> -->
+<!--             <div class="row row-cols-auto"> -->
+<!--             	<div class="col" th:text="${rl.deptno}"></div> -->
+<!--             	<div class="col" th:text="${rl.deptnm}"></div> -->
+<!--             </div> -->
+<!--             </th:block> -->
+            <table class="table table-hover table-bordered table-sm">
+            	<thead class="thead-dark">
             	<tr>
             		<th>부서코드</th>
             		<th>부서명칭</th>
             	</tr>
+            	</thead>
             	<th:block th:each="rl : ${resultList}">
             		<tr>
             			<td th:text="${rl.deptno}"></td>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myBatis.myService.dao.MdInfoDao">
+	<select id="selectItem" 
+		parameterType="com.myBatis.myService.model.MdInfo"
+		resultType="com.myBatis.myService.model.MdInfo">
+		SELECT 
+			  W91MDSIGN MDSIGN
+			, TRIM(W91MDNAME) MDNAME
+		FROM JAIN_WM.WMMAD91
+	</select>
+</mapper>

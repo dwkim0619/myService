@@ -10,9 +10,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	
-    <th:block layout:fragment="head">
-    	<title>Spring Boot</title>
-    </th:block>
+	<script>
+	$(document).ready(function(){
+		$('input[name=_selected_all_]').on('change', function(){
+			  $('input[name=_selected_]').prop('checked', this.checked);
+			});
+	});
+	</script>
+ 	<title th:text="${mdInfo.mdname + '[' + mdInfo.mdsign + ']'}">
+ 	</title>
 
     <body>
     	<div class="container p-3 my-3 bg-dark text-white">
@@ -20,26 +26,24 @@
         </div>
 		
         <div layout:fragment="content" class="container">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-outline-primary">조회</button>
+			  <button type="button" class="btn btn-outline-danger">삭제</button>
+			</div>
+			
             <h3>부서코드 목록</h3>
-<!--             <div class="row row-cols-auto"> -->
-<!--             	<div class="col">부서코드</div> -->
-<!--             	<div class="col">부서명칭</div> -->
-<!--             </div> -->
-<!--             <th:block th:each="rl : ${resultList}"> -->
-<!--             <div class="row row-cols-auto"> -->
-<!--             	<div class="col" th:text="${rl.deptno}"></div> -->
-<!--             	<div class="col" th:text="${rl.deptnm}"></div> -->
-<!--             </div> -->
-<!--             </th:block> -->
+
             <table class="table table-hover table-bordered table-sm">
             	<thead class="thead-dark">
             	<tr>
+            		<th><input type="checkbox" name="_selected_all_"></th>
             		<th>부서코드</th>
             		<th>부서명칭</th>
             	</tr>
             	</thead>
             	<th:block th:each="rl : ${resultList}">
             		<tr>
+            			<td><input type="checkbox" name="_selected_"></td>
             			<td th:text="${rl.deptno}"></td>
             			<td th:text="${rl.deptnm}"></td>
             		</tr>
